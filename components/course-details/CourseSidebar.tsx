@@ -1,4 +1,5 @@
 import { Play, Clock, BookOpen, Award, MessageSquare, Users } from 'lucide-react';
+import Link from 'next/link';
 
 const LESSONS = [
   { num: '01', title: 'Introduction to Digital Assets', duration: '12 mins' },
@@ -73,9 +74,9 @@ export function CourseSidebar() {
           <p className="text-xs text-gray-500 mb-4 leading-relaxed">
             Ready to Dive In? Enroll Now and Start Building Your Digital Future!
           </p>
-          <button className="w-full border border-gray-200 text-sm font-medium text-foreground py-2.5 rounded-xl hover:border-gray-300 transition-colors">
+          <Link href="/creators/purepearl" className="block w-full text-center border border-gray-200 text-sm font-medium text-foreground py-2.5 rounded-xl hover:border-gray-300 transition-colors">
             See Full Profile
-          </button>
+          </Link>
         </div>
       </div>
     </div>

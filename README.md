@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ByteSpace
+
+ByteSpace is a modern, responsive web application for learning and accessing hundreds of digital courses. It was designed with a beautiful, pixel-perfect UI tailored for a premium user experience.
 
 ## Getting Started
 
 First, run the development server:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Authentication (Demo)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This project features a static, non-dynamic authentication flow for demonstration purposes. There is no real backend database currently connected.
 
-## Learn More
+### Sign In Credentials
+To access the sign-in flow, navigate to `/login` and use the following pre-filled static credentials:
 
-To learn more about Next.js, take a look at the following resources:
+- **Email:** `admin@mail.com`
+- **Password:** `adminadmin`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**How it works:**
+1. Upon clicking "Sign In", the application will display a premium animated success modal welcoming you back.
+2. After a 2-second delay, you will be automatically redirected to the Home page.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Registration Flow
+Similarly, navigating to `/register` allows you to experience the sign-up flow. Clicking "Continue" will trigger a static success modal and redirect you to the Home page after 2 seconds. No data is actually saved to a server.
 
-## Deploy on Vercel
+## Features
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Pixel Perfect UI:** Implemented meticulously from SVG designs.
+- **Dynamic Routing:** Built with Next.js App Router for dynamic course (`/courses/[id]`) and creator (`/creators/[id]`) pages.
+- **Interactive Search:** Real-time query handling on the `/search` page.
+- **Responsive:** Fully optimized for mobile and desktop viewing.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+This is a [Next.js](https://nextjs.org) project bootstrapped with `create-next-app`.

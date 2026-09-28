@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { AuthLayout } from '@/components/auth/AuthLayout';
+import { LoginForm } from '@/components/auth/LoginForm';
 
 export const metadata: Metadata = {
   title: 'Sign In — ByteSpace',
@@ -16,44 +17,7 @@ export default function LoginPage() {
       <p className="text-sm font-semibold text-[#0B3AE2] mb-2 tracking-wide">Sign In</p>
       <h1 className="text-4xl font-extrabold text-foreground mb-10 leading-tight">Welcome Back</h1>
 
-      <form className="space-y-6">
-        <div>
-          <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-            Email
-          </label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            autoComplete="email"
-            placeholder="designer@example.com"
-            className="w-full h-14 rounded-xl border border-gray-200 px-5 text-sm text-foreground placeholder:text-gray-400 outline-none focus:border-[#0B3AE2] focus:ring-2 focus:ring-[#0B3AE2]/10 transition-all"
-          />
-        </div>
-
-        <div>
-          <label htmlFor="password" className="block text-sm font-medium text-foreground mb-2">
-            Password
-          </label>
-          <input
-            id="password"
-            name="password"
-            type="password"
-            autoComplete="current-password"
-            placeholder="••••••••"
-            className="w-full h-14 rounded-xl border border-gray-200 px-5 text-sm text-foreground placeholder:text-gray-400 outline-none focus:border-[#0B3AE2] focus:ring-2 focus:ring-[#0B3AE2]/10 transition-all"
-          />
-        </div>
-
-        <div className="flex justify-end pt-2">
-          <button
-            type="submit"
-            className="bg-[#D4FB20] text-black font-bold px-8 py-3.5 rounded-full hover:bg-[#D4FB20]/90 active:scale-95 transition-all text-sm"
-          >
-            Sign In
-          </button>
-        </div>
-      </form>
+      <LoginForm />
 
       <div className="flex items-center gap-4 my-8">
         <div className="flex-1 h-px bg-gray-200" />

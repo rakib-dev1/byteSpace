@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 
-import { Video } from 'lucide-react';
+import { Video, Star } from 'lucide-react';
 
 const TABS = ['About', 'Lesson', 'Reviews'] as const;
 
@@ -207,11 +207,112 @@ export function CourseContent({ id }: { id: string }) {
       )}
 
       {activeTab === 'Reviews' && (
-        <div className="text-center py-16 text-gray-400">
-          <p className="text-lg font-medium">Reviews tab — see /courses/{id}/reviews</p>
-          <Link href={`/courses/${id}/reviews`} className="text-[#0B3AE2] font-semibold hover:underline mt-2 inline-block">
-            View all reviews →
-          </Link>
+        <div className="space-y-8">
+          <div>
+            <h2 className="text-xl font-extrabold text-foreground mb-4">What Learners Are Saying</h2>
+            <p className="text-[15px] text-gray-600 leading-relaxed">
+              Discover what our learners have to say about their experience with &apos;Build Digital Assets: A
+              Comprehensive Guide.&apos; Read reviews and ratings from individuals who have embarked on the
+              transformative journey of mastering digital asset creation.
+            </p>
+          </div>
+
+          <div className="border border-gray-200 rounded-3xl p-6 shadow-sm flex flex-col sm:flex-row gap-8 items-center">
+            <div className="w-32 h-32 rounded-2xl bg-[#D4FB20] flex flex-col items-center justify-center flex-shrink-0">
+              <span className="text-sm font-semibold text-gray-800">Ratings</span>
+              <span className="text-5xl font-extrabold text-black mt-1">4.7</span>
+            </div>
+            
+            <div className="flex-1 w-full space-y-3">
+              {[
+                { stars: 5, count: 720, percent: 80 },
+                { stars: 4, count: 120, percent: 20 },
+                { stars: 3, count: 21, percent: 5 },
+                { stars: 2, count: 12, percent: 3 },
+                { stars: 1, count: 16, percent: 4 },
+              ].map((row) => (
+                <div key={row.stars} className="flex items-center gap-4">
+                  <div className="flex-1 h-2.5 bg-gray-100 rounded-full overflow-hidden">
+                    <div className="h-full bg-[#D4FB20]" style={{ width: `${row.percent}%` }}></div>
+                  </div>
+                  <div className="flex items-center gap-1 w-24">
+                    {[1, 2, 3, 4, 5].map((s) => (
+                      <Star key={s} className={`w-3.5 h-3.5 ${s <= row.stars ? 'fill-gray-700 text-gray-700' : 'fill-gray-200 text-gray-200'}`} />
+                    ))}
+                  </div>
+                  <div className="w-8 text-right text-sm text-gray-500">{row.count}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h2 className="text-xl font-extrabold text-foreground mb-4">Individual Reviews:</h2>
+            <div className="flex flex-wrap gap-2 mb-8">
+              <button className="px-5 py-2 rounded-full text-sm font-semibold bg-[#D4FB20] text-black border border-[#D4FB20]">
+                All rating
+              </button>
+              {[5, 4, 3, 2, 1].map((rating) => (
+                <button key={rating} className="flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium bg-white border border-gray-200 text-gray-600 hover:border-gray-300">
+                  <Star className="w-3.5 h-3.5 fill-gray-400 text-gray-400" /> {rating}
+                </button>
+              ))}
+            </div>
+
+            <div className="space-y-4">
+              {[
+                {
+                  name: 'PurePearl Studio',
+                  role: 'UI/UX Designer',
+                  avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=purepearl',
+                  time: 'a year ago',
+                  review: '"The course provided me with a comprehensive understanding of digital asset creation. The lessons were in-depth, practical, and immediately applicable to my work. Highly recommended!"'
+                },
+                {
+                  name: 'Albert Flores',
+                  role: 'UI/UX Designer',
+                  avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=albert',
+                  time: 'a year ago',
+                  review: 'This course transformed my approach to digital design. The combination of theory, hands-on exercises, and real-world applications made it a truly enriching experience. Excited to implement what I\'ve learned!'
+                },
+                {
+                  name: 'Cody Fisher',
+                  role: 'UI/UX Designer',
+                  avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=cody',
+                  time: 'a year ago',
+                  review: 'The project showcase and critique module created a collaborative environment where I could showcase my work, receive valuable feedback, and refine my skills. It added a unique and valuable dimension to the learning process.'
+                },
+                {
+                  name: 'Brooklyn Simmons',
+                  role: 'UI/UX Designer',
+                  avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=brooklyn',
+                  time: 'a year ago',
+                  review: 'The lessons on optimizing digital assets for various platforms were particularly insightful. The course adapts to the evolving digital landscape, and the engaging content kept me motivated throughout.'
+                }
+              ].map((review, i) => (
+                <div key={i} className="border border-gray-200 rounded-3xl p-6 shadow-sm bg-white">
+                  <div className="flex justify-between items-start mb-4">
+                    <div className="flex items-center gap-3">
+                      <img src={review.avatar} alt={review.name} className="w-12 h-12 rounded-full bg-gray-100" />
+                      <div>
+                        <h4 className="font-bold text-[15px] text-foreground">{review.name}</h4>
+                        <p className="text-xs text-gray-500">{review.role}</p>
+                      </div>
+                    </div>
+                    <span className="text-xs text-gray-400">{review.time}</span>
+                  </div>
+                  <div className="flex items-center gap-1 mb-4">
+                    {[1, 2, 3, 4, 5].map((s) => (
+                      <Star key={s} className="w-4 h-4 fill-gray-700 text-gray-700" />
+                    ))}
+                  </div>
+                  <p className="text-[15px] text-gray-600 leading-relaxed">
+                    {review.review}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       )}
     </div>
